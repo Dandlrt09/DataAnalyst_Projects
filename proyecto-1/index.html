@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard RRHH — Portafolio</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --border: #e5e5e5;
+            --text: #1a1a1a;
+            --muted: #6b7280;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .header-nav a:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 640px;
+        }
+
+        /* Context cards */
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+
+        .context-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .context-card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .context-card p {
+            font-size: 0.95rem;
+        }
+
+        /* Stack pills */
+        .stack {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .stack-pill {
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Dashboard embed */
+        .dashboard-section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .dashboard-section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-frame {
+            width: 100%;
+            height: 620px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .dashboard-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Page breakdown */
+        .pages {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .pages h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .context-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.6rem; }
+            .dashboard-frame { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="/" class="header-brand">Daniel De los Ríos</a>
+        <nav class="header-nav">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#paginas">Páginas</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <span class="hero-badge">Proyecto de Portafolio</span>
+        <h1>Dashboard de Recursos Humanos</h1>
+        <p>
+            Análisis de rotación, desempeño y perfil de empleados
+            para apoyar la toma de decisiones en gestión de talento.
+        </p>
+    </section>
+
+    <div class="context-grid">
+        <div class="context-card">
+            <h3>Problema</h3>
+            <p>
+                Una organización necesita monitorear la salud de su
+                capital humano: quién se va, por qué, y qué patrones
+                aparecen en el desempeño y la rotación.
+            </p>
+        </div>
+
+        <div class="context-card">
+            <h3>Enfoque</h3>
+            <p>
+                Tres vistas jerárquicas: un resumen ejecutivo para
+                visión general, un análisis personal para detalle
+                individual, y una vista de desempeño y rotación.
+            </p>
+        </div>
+
+        <div class="context-card">
+            <h3>Stack</h3>
+            <div class="stack">
+                <span class="stack-pill">Power BI</span>
+                <span class="stack-pill">Power Query</span>
+                <span class="stack-pill">DAX</span>
+                <span class="stack-pill">Kaggle</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="dashboard-section" id="dashboard">
+        <h2>Visualización interactiva</h2>
+        <div class="dashboard-frame">
+            <iframe
+                title="Dashboard de recursos humanos"
+                src="https://app.powerbi.com/view?r=eyJrIjoiNDkzMzYwZWItZDU0YS00Y2M5LTkxYTEtZjIzNDQ1NmQzYzUwIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9"
+                allowFullScreen="true">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="pages" id="paginas">
+        <h2>Estructura del dashboard</h2>
+
+        <div class="page-item">
+            <h3>1. Resumen Ejecutivo</h3>
+            <p>
+                KPIs principales: total de empleados, tasa de rotación,
+                distribución por departamento y tendencias clave.
+                Diseñado para que un director entienda la situación en 30 segundos.
+            </p>
+        </div>
+
+        <div class="page-item">
+            <h3>2. Análisis Personal</h3>
+            <p>
+                Vista detallada del perfil individual: antigüedad,
+                departamento, satisfacción y factores de riesgo.
+                Permite al manager filtrar y explorar por persona.
+            </p>
+        </div>
+
+        <div class="page-item">
+            <h3>3. Desempeño y Rotación</h3>
+            <p>
+                Correlación entre nivel de desempeño y probabilidad
+                de rotación. Responde a la pregunta crítica:
+                ¿se van los mejores o los peores?
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+        <p>
+            Contacto:
+            <a href="mailto:danieldlrt.jobs@gmail.com">danieldlrt.jobs@gmail.com</a> ·
+            <a href="https://linkedin.com/in/danieldlrt09">www.linkedin.com/in/danieldlrt09</a> ·
+            <a href="https://github.com/Dandlrt09">https://github.com/Dandlrt09</a>
+        </p>
+    </footer>
+
+</body>
+</html>
